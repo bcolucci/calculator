@@ -39,13 +39,13 @@ const test = version => {
     it('should render as flat array (complexe)', () => {
       const calculator = Calculator();
       calculator.pushCmd('(1 + 2.2 x (1 - 4.7 / 2)) / 3.1 + 5');
-      calculator.toFlatArrayExp().should.be.deepEqual([ '(', 1, '+', 2.2, 'x', '(', 1, '-', 4.7, '/', 2, ')', ')', '/', 3.1, '+', 5 ]);
+      calculator.toFlatArray().should.be.deepEqual([ '(', 1, '+', 2.2, 'x', '(', 1, '-', 4.7, '/', 2, ')', ')', '/', 3.1, '+', 5 ]);
     });
 
     it('should render as deep array (complexe)', () => {
       const calculator = Calculator();
       calculator.pushCmd('(1 + 2.2 x (1 - 4.7 / 2)) / 3.1 + 5');
-      calculator.toDeepArrayExp().should.be.deepEqual([ [ 1, '+', 2.2, 'x', [ 1, '-', 4.7, '/', 2 ] ], '/', 3.1, '+', 5 ]);
+      calculator.toDeepArray().should.be.deepEqual([ [ 1, '+', 2.2, 'x', [ 1, '-', 4.7, '/', 2 ] ], '/', 3.1, '+', 5 ]);
     });
 
     it('should calculate', () => {

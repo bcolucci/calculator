@@ -4,13 +4,30 @@ const R = require('ramda');
 
 const engine = () => {
 
+  const isNumber = x => String(Number(x)) === x;
+
   const instance = function () {
 
     this.cmdBuffer = [];
 
     this.pushCmd = function (cmd) {
-      const self = this;
-      cmd.split('').filter(c => c.trim().length > 0).forEach(c => self.cmdBuffer.push(c));
+      if (cmd === 'C') {
+        this.cmdBuffer.splice(0, this.cmdBuffer.length);
+        return this;
+      }
+      const chars = cmd.split('')
+        .filter(c => c.trim().length > 0);
+      while (chars.length > 0) {
+        let c = chars.shift();
+        if (chars[0] === '.') {
+          c += chars.shift();
+          while (isNumber(chars[0]))
+            c += chars.shift();
+        }
+        if (isNumber(c))
+          c = Number(c);
+        this.cmdBuffer.push(c);
+      }
       return this;
     };
 
@@ -18,11 +35,11 @@ const engine = () => {
       return this.cmdBuffer.join('');
     };
 
-    this.toFlatArray = R.identity;
+    this.toFlatArray = function () {
+      return this.cmdBuffer;
+    };
 
-    this.toFlatArrayExp = R.identity;
-
-    this.toDeepArrayExp = R.identity;
+    this.toDeepArray = R.identity;
 
   };
 

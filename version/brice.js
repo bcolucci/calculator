@@ -4,20 +4,29 @@ const R = require('ramda');
 
 const engine = () => {
 
-  const pushCmd = R.identity;
+  const instance = function () {
 
-  const toString = R.identity;
-  const toFlatArray = R.identity;
-  const toFlatArrayExp = R.identity;
-  const toDeepArrayExp = R.identity;
+    this.cmdBuffer = [];
 
-  return {
-    pushCmd,
-    toString,
-    toFlatArray,
-    toFlatArrayExp,
-    toDeepArrayExp
+    this.pushCmd = function (cmd) {
+      const self = this;
+      cmd.split('').filter(c => c.trim().length > 0).forEach(c => self.cmdBuffer.push(c));
+      return this;
+    };
+
+    this.toString = function () {
+      return this.cmdBuffer.join('');
+    };
+
+    this.toFlatArray = R.identity;
+
+    this.toFlatArrayExp = R.identity;
+
+    this.toDeepArrayExp = R.identity;
+
   };
+
+  return new instance();
 };
 
 module.exports = engine;

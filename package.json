@@ -1,0 +1,40 @@
+{
+  "name": "calculator",
+  "version": "0.0.1",
+  "main": "calculator.js",
+  "author": "Brice Colucci <brice.colucci@gmail.com>",
+  "description": "Make a calculator in the FP way",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-mocha": "^2.2.0",
+    "gulp-watch": "^4.3.6",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "mocha": "^2.5.1",
+    "should": "^8.4.0"
+  },
+  "dependencies": {
+    "ramda": "^0.21.0"
+  },
+  "contributors": [
+    {
+      "name": "Arnaud Laval",
+      "email": "arnaud.laval2@sfr.fr"
+    }
+  ],
+  "homepage": "https://github.com/bcolucci/calculator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bcolucci/calculator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bcolucci/calculator/issues"
+  },
+  "scripts": {
+    "start": "gulp",
+    "test": "gulp test"
+  }
+}

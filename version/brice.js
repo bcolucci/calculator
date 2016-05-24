@@ -4,12 +4,19 @@ const R = require('ramda');
 
 const engine = () => {
 
-  const push = R.identity;
-  const expression = R.identity;
+  const pushCmd = R.identity;
+
+  const toString = R.identity;
+  const toFlatArray = R.identity;
+  const toFlatArrayExp = R.identity;
+  const toDeepArrayExp = R.identity;
 
   return {
-    push,
-    expression
+    pushCmd,
+    toString,
+    toFlatArray,
+    toFlatArrayExp,
+    toDeepArrayExp
   };
 };
 
